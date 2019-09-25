@@ -11,6 +11,6 @@ server.get('/nome', (req, res) => {
     return res.send("redson");
 });
 
-let port = process.env.PORT || 4444;
+let port = process.env.PORT || 8080;
 
 server.listen(port);

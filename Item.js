@@ -16,6 +16,10 @@ const ItemSchema = new Schema({
     quantidade: {
         type: Number,
         required: true
+    },
+    img: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true,

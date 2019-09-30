@@ -15,8 +15,9 @@ module.exports = {
 
     async exibirPorCategoria(categoria) {
         const itens = await Item.find(categoria);
+        const itensOrdenados = this.ordernar(itens);
 
-        return itens;
+        return itensOrdenados;
     },
 
     async alterarQuantidade(id, quantidade, tipo) {
@@ -36,5 +37,17 @@ module.exports = {
         const item = await Item.findByIdAndDelete(id);
 
         return item;
+    },
+
+    async ordernar(lista) {
+        const listaOrdenada = lista.sort(function(a, b) {
+            if (a.quantidade < b.quantidade) 
+                return 1;
+            if (a.quantidade > b.quantidade) 
+                return -1;
+            else
+                return 0;
+        });
+        return listaOrdenada;
     }
 }

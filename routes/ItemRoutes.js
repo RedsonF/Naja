@@ -1,5 +1,5 @@
 const express = require('express');
-const ItemController = require('./ItemController');
+const ItemController = require('../controllers/ItemController');
 const authMiddleware = require('../middlewares/AuthMiddleware');
 
 const routes = express.Router();

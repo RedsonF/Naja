@@ -1,4 +1,4 @@
-const ItemService = require('./ItemService');
+const ItemService = require('../services/ItemService');
 
 module.exports = {
     async adicionar(req, res) {

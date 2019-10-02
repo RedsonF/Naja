@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const itemRoutes = require('./Item/ItemRoutes');
-const usuarioRoutes = require('./usuario/Usuario');
+const itemRoutes = require('./routes/ItemRoutes');
+const usuarioRoutes = require('./models/Usuario');
 const server = express();
 
 mongoose.connect("mongodb+srv://redson:redson9444@cluster0-fk1sc.mongodb.net/test?retryWrites=true&w=majority",

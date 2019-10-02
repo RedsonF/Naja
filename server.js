@@ -12,7 +12,7 @@ mongoose.connect("mongodb+srv://redson:redson9444@cluster0-fk1sc.mongodb.net/tes
     useUnifiedTopology: true });
 
 server.use(express.json());
-server.use(usuarioRoutes);
+//server.use(usuarioRoutes);
 server.use(itemRoutes);
 
 let port = process.env.PORT || 4444;

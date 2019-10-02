@@ -13,6 +13,13 @@ module.exports = {
         return item;
     },
 
+    async exibir() {
+        const itens = Item.find();
+        const itensOrdenados = this.ordernar(itens);
+
+        return itensOrdenados;
+    },
+
     async exibirPorCategoria(categoria) {
         const itens = await Item.find(categoria);
         const itensOrdenados = this.ordernar(itens);
@@ -39,7 +46,7 @@ module.exports = {
         return item;
     },
 
-    async ordernar(lista) {
+    ordernar(lista) {
         const listaOrdenada = lista.sort(function(a, b) {
             if (a.quantidade < b.quantidade) 
                 return 1;
@@ -48,6 +55,8 @@ module.exports = {
             else
                 return 0;
         });
+        
         return listaOrdenada;
     }
+
 }

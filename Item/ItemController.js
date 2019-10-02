@@ -6,7 +6,11 @@ module.exports = {
 
         return res.json(await ItemService.adicionar(nome, categoria, preco, quantidade, img));
     },
-    
+
+    async exibir(req, res) {
+        return res.json(await ItemService.exibir());
+    },
+
     async exibirPorCategoria(req, res) {
         const categoria = req.query;
 
@@ -14,10 +18,8 @@ module.exports = {
     },
 
     async alterarQuantidade(req, res) {
-        const id = req.query.id;
-        const quantidade = parseInt(req.query.quantidade);
-        const tipo = req.query.tipo;
-
+        const { id, quantidade, tipo } = req.body;
+      
         return res.json(await ItemService.alterarQuantidade(id, quantidade, tipo));
     },
 

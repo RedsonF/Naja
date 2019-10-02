@@ -1,9 +1,6 @@
 const express = require('express');
-
 const mongoose = require('mongoose');
-
-const routes = require('./routes');
-
+const routes = require('./Item/ItemRoutes');
 const server = express();
 
 mongoose.connect("mongodb+srv://redson:redson9444@cluster0-fk1sc.mongodb.net/test?retryWrites=true&w=majority",
@@ -15,10 +12,6 @@ mongoose.connect("mongodb+srv://redson:redson9444@cluster0-fk1sc.mongodb.net/tes
 
 server.use(express.json());
 server.use(routes);
-
-server.get('/nome', (req, res) => {
-    return res.send("redson");
-});
 
 let port = process.env.PORT || 4444;
 

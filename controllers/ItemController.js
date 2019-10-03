@@ -2,30 +2,56 @@ const ItemService = require('../services/ItemService');
 
 module.exports = {
     async adicionar(req, res) {
-        const { nome, categoria, preco, quantidade, img } = req.body;
+        try {
+            const {nome, quantidade, valor, categoria, imagem} = req.body;
 
-        return res.json(await ItemService.adicionar(nome, categoria, preco, quantidade, img));
+            return res.json(await ItemService.adicionar(nome, quantidade, valor, categoria, imagem));
+
+        } catch (error) {
+            return res.status(400).json({ error:error.message });
+        }
     },
 
     async exibir(req, res) {
-        return res.json(await ItemService.exibir());
+        try {
+            return res.json(await ItemService.exibir());
+
+        } catch (error) {
+            return res.status(400).json({ error:error.message });
+        }
+        
     },
 
     async exibirPorCategoria(req, res) {
-        const categoria = req.query;
+        try {
+            const categoria = req.query.categoria;
 
-        return res.json(await ItemService.exibirPorCategoria(categoria));
+            return res.json(await ItemService.exibirPorCategoria(categoria));
+
+        } catch (error) {
+            return res.status(400).json({ error:error.message });
+        }
     },
 
     async alterarQuantidade(req, res) {
-        const { id, quantidade, tipo } = req.body;
+        try {
+            const { id, quantidade, tipo } = req.body;
       
-        return res.json(await ItemService.alterarQuantidade(id, quantidade, tipo));
+            return res.json(await ItemService.alterarQuantidade(id, quantidade, tipo));
+
+        } catch (error) {
+            return res.status(400).json({ error:error.message });
+        }
     },
 
-    async remover(req, res) {
-        const id = req.query.id;
+    async remover(req, res) { 
+        try {
+            const id = req.query.id;
 
-        return res.json(await ItemService.remover(id));
+            return res.json(await ItemService.remover(id));
+
+        } catch (error) {
+            return res.status(400).json({ error:error.message });
+        }
     }
 }

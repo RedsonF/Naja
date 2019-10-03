@@ -3,9 +3,9 @@ const ItemService = require('../services/ItemService');
 module.exports = {
     async adicionar(req, res) {
         try {
-            const {nome, quantidade, valor, categoria, imagem} = req.body;
+            const {nome, categoria, preco, quantidade, img} = req.body;
 
-            return res.json(await ItemService.adicionar(nome, quantidade, valor, categoria, imagem));
+            return res.json(await ItemService.adicionar(nome, categoria, preco, quantidade, img));
 
         } catch (error) {
             return res.status(400).json({ error:error.message });
@@ -23,11 +23,14 @@ module.exports = {
     },
 
     async exibirPorCategoria(req, res) {
-        
+        try {
             const categoria = req.query.categoria;
 
             return res.json(await ItemService.exibirPorCategoria(categoria));
 
+        } catch (error) {
+            return res.status(400).json({ error:error.message });
+        }
     },
 
     async alterarQuantidade(req, res) {

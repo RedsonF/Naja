@@ -14,14 +14,14 @@ module.exports = {
     },
 
     async exibir() {
-        const itens = Item.find();
+        const itens = await Item.find();
         const itensOrdenados = this.ordernar(itens);
 
         return itensOrdenados;
     },
 
     async exibirPorCategoria(categoria) {
-        const itens = await Item.find(categoria);
+        const itens = await Item.find({ categoria });
         const itensOrdenados = this.ordernar(itens);
 
         return itensOrdenados;

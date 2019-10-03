@@ -23,14 +23,11 @@ module.exports = {
     },
 
     async exibirPorCategoria(req, res) {
-        try {
+        
             const categoria = req.query.categoria;
 
             return res.json(await ItemService.exibirPorCategoria(categoria));
 
-        } catch (error) {
-            return res.status(400).json({ error:error.message });
-        }
     },
 
     async alterarQuantidade(req, res) {

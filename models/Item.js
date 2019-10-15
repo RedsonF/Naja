@@ -19,7 +19,7 @@ const ItemSchema = new Schema({
     },
     img: {
         type: String,
-        required: true
+        required: false
     }
 }, {
     timestamps: true,
